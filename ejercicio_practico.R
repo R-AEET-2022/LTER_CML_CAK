@@ -26,6 +26,9 @@ m<-lm(x,y)
 
 
 
+
+
+
 ############################################
 CARLOS
 #linea 1 sdfsdfsdfsdfsdfs
