@@ -19,6 +19,12 @@ CRISTINA
 
 #veamos conflictos varios
 
+head(ourdata)
+m<-lm(x,y)
+
+
+
+
 
 ############################################
 CARLOS
