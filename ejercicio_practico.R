@@ -12,3 +12,12 @@ str(ourdata)
 head(ourdata)
 write.csv(ourdata, file = here("data/ourdata.csv"))
 here()
+
+###########################################3
+CRISTINA
+
+
+
+
+############################################
+CARLOS
