@@ -4,6 +4,7 @@
 
 library(here)
 library(remotes)
+library(ggplot2)
 
 ## cargamos el dataset
 remotes::install_github("lter/lterdatasampler")
