@@ -10,4 +10,5 @@ remotes::install_github("lter/lterdatasampler")
 ourdata <- lterdatasampler::and_vertebrates
 str(ourdata)
 head(ourdata)
-
+write.csv(ourdata, file = here("data/ourdata.csv"))
+here()
