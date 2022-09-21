@@ -40,6 +40,15 @@ library(tidyr) #ordenar y trasformar datasets
 library(stringr) #manipular caracteres
 library(forcats) #manipular factores
 library(lubridate) #manipular fechas
+library("easystats")
+library("effects")
+library("equatiomatic")
+library("parameters")
+library("report")
+library("visreg")
+library("performance")
+library("DHARMa")
+library("modelbased")
 
 library(readr)
 ourdata <- read_csv("data/ourdata.csv")
@@ -65,7 +74,9 @@ ggplot(data_species2, aes(x = length_1_mm,
 lm_lter1 <- glm(weight_g ~ length_1_mm + species, data=data_species2)
 summary(lm_lter1)
 
-
+lm_lter2 <- lm(weight_g ~ length_1_mm * species, data=data_species2)
+summary(lm_lter2)
+check_model(lm_lter2)
 
 
 
