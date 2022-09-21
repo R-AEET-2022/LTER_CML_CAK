@@ -7,25 +7,14 @@ library(remotes)
 library(ggplot2)
 
 ## cargamos el dataset
-remotes::install_github("lter/lterdatasampler")
-ourdata <- lterdatasampler::and_vertebrates
-str(ourdata)
-head(ourdata)
-write.csv(ourdata, file = here("data/ourdata.csv"))
-here()
+# remotes::install_github("lter/lterdatasampler")  #Solo necesario para la descarga de internet
+# ourdata <- lterdatasampler::and_vertebrates ## Esto se hace solo una vez, descarga de internet
+# write.csv(ourdata, file = here("data/ourdata.csv"))
 
 ###########################################3
 CRISTINA
 
-install.packages(c("here",
-                   "tidyverse",
-                   "patchwork",
-                   "tidyverse",
-                   "RColorBrewer",
-                    "readxl",
-                   "tidylog",
-                   "summarytools",
-                     "knitr"))
+#install.packages(c("here","tidyverse","patchwork","tidyverse","RColorBrewer","readxl","tidylog","summarytools","knitr"))
 library(here) #refiere la ruta a la carpeta del proyecto
 library(tidyverse) #incluye la librería ggplot2
 library(ggplot2) #VISUALIZACIÓN DE DATOS
@@ -49,8 +38,8 @@ library("visreg")
 library("performance")
 library("DHARMa")
 library("modelbased")
-
 library(readr)
+
 ourdata <- read_csv("data/ourdata.csv")
 View(ourdata)
 
