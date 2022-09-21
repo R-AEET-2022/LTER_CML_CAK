@@ -41,61 +41,29 @@ library(stringr) #manipular caracteres
 library(forcats) #manipular factores
 library(lubridate) #manipular fechas
 
-ourdata$species <- as.factor(ourdata$species) 
+library(readr)
+ourdata <- read_csv("data/ourdata.csv")
+View(ourdata)
+
+ourdata$species <- as.factor(ourdata$species)
 ggplot(ourdata, aes(x = length_1_mm,
                     y = weight_g,
-                    color = species)) + 
+                    color = species)) +
   geom_point()
 
-od2 <- ourdata %>%
-  filter(species != "Cascade torrent salamander")
+data_species2 <- ourdata %>%
+  subset(species != "Cascade torrent salamander")
 
-  head(od2)
+view(data_species2)
 
-ggplot(od2, aes(x = length_1_mm,
+data_species2$species <- as.factor(data_species2$species)
+ggplot(data_species2, aes(x = length_1_mm,
                     y = weight_g,
-                    color = species)) + 
+                    color = species)) +
   geom_point()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+lm_lter1 <- glm(weight_g ~ length_1_mm + species, data=data_species2)
+summary(lm_lter1)
 
 
 
