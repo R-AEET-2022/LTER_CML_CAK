@@ -67,39 +67,14 @@ lm_lter2 <- lm(weight_g ~ length_1_mm * species, data=data_species2)
 summary(lm_lter2)
 check_model(lm_lter2)
 
+## prueba subset quitando juveniles
+data_species_adult <- ourdata %>%
+  subset(species != "Cascade torrent salamander") %>%
+  subset(length_1_mm > 100) %>%
+  ******** sigue por aky porfa
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-############################################
-CARLOS
-
-# The length_1_mm variable is the total or snout-fork length for cutthroat trout (total length from 1987 - 1994; snout-fork length since 1995), and snout-vent length for salamanders (all in millimeters).
-levels(ourdata$section)
-str(ourdata)
-ourdata$section <- as.factor(ourdata$section)
+data_species_adult$species <- as.factor(data_species_adult$species)
+ggplot(data_species_adult, aes(x = length_1_mm,
+                          y = weight_g,
+                          color = species)) +
+  geom_point()
