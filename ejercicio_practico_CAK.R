@@ -67,9 +67,9 @@ check_model(lm_lter2)
 
 ## prueba subset quitando juveniles
 data_species_adult <- ourdata %>%
-  subset(species != "Cascade torrent salamander") %>%
-  subset(length_1_mm > 100) %>%
-  ******** sigue por aky porfa
+  subset(species == "Coastal giant salamander") %>%
+  subset(length_1_mm > 100)
+
 
 data_species_adult$species <- as.factor(data_species_adult$species)
 ggplot(data_species_adult, aes(x = length_1_mm,
