@@ -76,3 +76,49 @@ ggplot(data_species_adult, aes(x = length_1_mm,
                           y = weight_g,
                           color = species)) +
   geom_point()
+
+######################################
+## CARLOS
+ourdata <- read.csv(here("data/ourdata.csv"))
+
+# Variable especies como factor
+ourdata$species <- as.factor(ourdata$species)
+
+ggplot(ourdata, aes(x = length_1_mm,
+                    y = weight_g,
+                    color = species)) +
+  geom_point()
+
+data_species2 <- ourdata %>%
+  subset(species != "Cascade torrent salamander")
+
+data_species2$species <- as.factor(data_species2$species)
+ggplot(data_species2, aes(x = length_1_mm,
+                          y = weight_g,
+                          color = species)) +
+  geom_point()
+
+## transformo en logaritmo para linealizar la grafica
+data_species_log <- data_species2
+data_species_log$log_length1 <- log10(data_species_log$length_1_mm)
+data_species_log$log_weight <- log10(data_species_log$weight_g)
+
+ggplot(data_species_log, aes(x = log_length1,
+                             y = log_weight,
+                             color = species)) +
+  geom_point()
+
+
+lm_log <- lm(log_weight ~ log_length1, data=data_species_log)
+plot(lm_log)
+
+lm_log_species <- lm(log_weight ~ log_length1 + species, data=data_species_log)
+plot(lm_log_species)
+
+lm_log_species_i <- lm(log_weight ~ log_length1 * species, data=data_species_log)
+plot(lm_log_species_i)
+ad
+check_model(lm_log_species_i)
+
+hist(ourdata$length_1_mm)
+hist(ourdata$weight_g,1000)
