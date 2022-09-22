@@ -52,8 +52,6 @@ ggplot(ourdata, aes(x = length_1_mm,
 data_species2 <- ourdata %>%
   subset(species != "Cascade torrent salamander")
 
-view(data_species2)
-
 data_species2$species <- as.factor(data_species2$species)
 ggplot(data_species2, aes(x = length_1_mm,
                     y = weight_g,
