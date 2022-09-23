@@ -122,7 +122,8 @@ plot(lm_log_species)
 
 lm_log_species_i <- lm(log_weight ~ log_length1 * species, data=data_species_log)
 plot(lm_log_species_i)
-ad
+
+summary(lm_log_species_i )
 check_model(lm_log_species_i)
 
 hist(ourdata$length_1_mm)
