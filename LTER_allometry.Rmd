@@ -2,9 +2,9 @@
 title: "LTER_allometry"
 author: "CML & CAK"
 date: "2022-09-22"
-output:
-  html_document:
-    df_print: paged
+output: 
+  pdf_document: 
+    latex_engine: xelatex
 ---
 
 ```{r setup, include=FALSE}
