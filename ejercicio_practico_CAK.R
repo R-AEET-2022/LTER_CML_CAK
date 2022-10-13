@@ -60,22 +60,27 @@ ggplot(data_species2, aes(x = length_1_mm,
 
 lm_lter1 <- glm(weight_g ~ length_1_mm + species, data=data_species2)
 summary(lm_lter1)
+check_model(lm_ter1)
 
 lm_lter2 <- lm(weight_g ~ length_1_mm * species, data=data_species2)
 summary(lm_lter2)
 check_model(lm_lter2)
 
-## prueba subset quitando juveniles
-data_species_adult <- ourdata %>%
-  subset(species == "Coastal giant salamander") %>%
-  subset(length_1_mm > 100)
+# Las asumpciones de los lm no se cumplen, vamos a trasformar los datos
+# alternativas: la funcion es exponencial, podriamos transformar solo la variable predictora =length
+# alternativa 2 hacer un log log (predictor y respuesta) este puede ser la mejor alternativa ya que
+# hay muchos datos de biomasa cercanos a cero, asi aumentas la escala
+# sugiero hacer log(y o x+1), para que no salgan valores negativos
 
+data_species2$log2_length <- log2(data_species2$length_1_mm)
+data_species2$log10_weight <- log10(data_species2$weight_g)
 
-data_species_adult$species <- as.factor(data_species_adult$species)
-ggplot(data_species_adult, aes(x = length_1_mm,
-                          y = weight_g,
-                          color = species)) +
+ourdata$species <- as.factor(ourdata$species)
+ggplot(ourdata, aes(x = length_1_mm,
+                    y = weight_g,
+                    color = species)) +
   geom_point()
+
 
 ######################################
 ## CARLOS
@@ -117,11 +122,17 @@ plot(lm_log_species)
 
 lm_log_species_i <- lm(log_weight ~ log_length1 * species, data=data_species_log)
 plot(lm_log_species_i)
+<<<<<<< HEAD
 ad
 
 summary(lm_log_species_i)
 
+=======
+
+summary(lm_log_species_i )
+>>>>>>> a0c3bc441edf146f334e32ed27aa109780d17d29
 check_model(lm_log_species_i)
 
 hist(ourdata$length_1_mm)
 hist(ourdata$weight_g,1000)
+
